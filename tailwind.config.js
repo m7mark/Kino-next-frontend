@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 const colors = require('tailwindcss/colors')
 const plugin = require('tailwindcss/plugin')
 const primary = '#E30B13'
@@ -13,7 +12,7 @@ module.exports = {
       primary,
       white: colors.white,
       black: colors.black,
-      transparant: colors.transparant,
+      transparent: colors.transparent,
       yellow: {
         700: '#f5c521',
       },
@@ -69,7 +68,7 @@ module.exports = {
           },
         },
       },
-      amimation: {
+      animation: {
         fade: 'fade .5s ease-in-out',
         scaleIn: 'scaleIn .35s ease-in-out',
       },

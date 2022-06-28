@@ -30,5 +30,3 @@ export const userMenu: IMenu = {
   title: 'General',
   items: [],
 }
-
-export const menus = [firstMenu, userMenu]
