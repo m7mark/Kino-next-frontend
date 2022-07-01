@@ -7,7 +7,6 @@ import { GenreMenu } from './genres/GenreMenu'
 import { firstMenu, userMenu } from './menu.data'
 
 export const MenuContainer: FC = () => {
-  console.log(API_URL)
   return (
     <div>
       <Menu menu={firstMenu} />
