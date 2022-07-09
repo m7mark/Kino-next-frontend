@@ -1,9 +1,11 @@
+import { Search } from './Search/Search'
 import styles from './Sidebar.module.scss'
 
 export const Sidebar = () => {
   return (
-    <>
-      <div>Sidebar</div>
-    </>
+    <div className={styles.sidebar}>
+      <Search />
+      {/* movies container */}
+    </div>
   )
 }
