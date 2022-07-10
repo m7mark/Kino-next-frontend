@@ -10,4 +10,10 @@ export const MovieServise = {
       params: searchTerm ? { searchTerm } : {},
     })
   },
+  async getMostPopularMovies() {
+    const { data: movies } = await axiosBase.get<IMovie[]>(
+      getMoviesUrl('/most-popular')
+    )
+    return movies
+  },
 }
