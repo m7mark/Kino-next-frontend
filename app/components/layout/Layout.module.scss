@@ -15,6 +15,18 @@ $bar-width: 20%;
   > div:last-child {
     @apply right-0 border-l border-l-gray-800;
   }
+  > div:first-child::-webkit-scrollbar-track,
+  > div:last-child::-webkit-scrollbar-track {
+    @apply border border-gray-900 py-0.5 bg-gray-800;
+  }
+  > div:first-child::-webkit-scrollbar,
+  > div:last-child::-webkit-scrollbar {
+    @apply w-1;
+  }
+  > div:first-child::-webkit-scrollbar-thumb,
+  > div:last-child::-webkit-scrollbar-thumb {
+    @apply rounded-lg bg-gray-700 shadow-sm;
+  }
 }
 .center {
   @apply min-h-screen p-layout;
