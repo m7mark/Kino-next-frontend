@@ -28,6 +28,16 @@ a {
   --primary-color: #e30b13;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #101215 inset !important;
+}
+input:-webkit-autofill {
+  -webkit-text-fill-color: rgb(153 154 165) !important;
+}
+
 input[type='file'],
 input[type='file']::-webkit-file-upload-button {
   @apply cursor-pointer focus:outline-none;

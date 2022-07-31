@@ -5,6 +5,7 @@ import { AuthFields } from '@/ui/field-elements/AuthFields'
 import { Button } from '@/ui/field-elements/Button'
 import { Heading } from '@/ui/heading/Heading'
 
+import { useActions } from '@/hooks/useActions'
 import { useAuth } from '@/hooks/useAuth'
 
 import { Meta } from '@/utils/meta/Meta'
@@ -25,14 +26,11 @@ export const Auth: FC = () => {
     reset,
   } = useForm<IAuthInput>({ mode: 'onChange' })
 
-  const login = (data: any) => {
-    console.table(data)
-  }
-  const register = () => {}
+  const { login, register } = useActions()
 
   const onSubmit: SubmitHandler<IAuthInput> = (data) => {
     if (type === 'login') login(data)
-    else if (type === 'register') register()
+    else if (type === 'register') register(data)
     reset()
   }
 
