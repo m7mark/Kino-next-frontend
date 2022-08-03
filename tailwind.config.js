@@ -118,7 +118,7 @@ module.exports = {
             alignItems: 'center',
             justifyContent: 'space-between',
           },
-          'image-like-bg': {
+          '.image-like-bg': {
             objectPosition: 'center',
             objectFit: 'cover',
             pointerEvents: 'none',
