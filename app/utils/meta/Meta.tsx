@@ -46,7 +46,6 @@ export const Meta: FC<ISeo & { children: ReactNode }> = ({
           <meta name="robots" content="noindex, nofollow" />
         )}
       </Head>
-
       {children}
     </>
   )
