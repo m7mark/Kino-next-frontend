@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { AdminNavigation } from '@/components/ui/admin-navigation/AdminNavigation'
+import { AdminNavigation } from '@/ui/admin-navigation/AdminNavigation'
 
 import { Heading } from '@/ui/heading/Heading'
 

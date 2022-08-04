@@ -2,7 +2,7 @@ import cn from 'classnames'
 import { FC } from 'react'
 import { useQuery } from 'react-query'
 
-import { SkeletonLoader } from '@/components/ui/SkeletonLoader'
+import { SkeletonLoader } from '@/ui/SkeletonLoader'
 
 import { AdminService } from '@/services/admin.service'
 

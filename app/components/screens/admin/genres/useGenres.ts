@@ -6,42 +6,41 @@ import { ITableItem } from '@/ui/admin-table/AdminTable/admin-table.interface'
 
 import { useDebounce } from '@/hooks/useDebounce'
 
-import { UserService } from '@/services/user.service'
+import { GenreService } from '@/services/genre.service'
 
-import { convertMongoDate } from '@/utils/date/convertMongoDate'
 import { toastError } from '@/utils/toast-error'
 
 import { getAdminUrl } from '@/config/url.config'
 
-export const useUsers = () => {
+export const useGenres = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const debouncedSearch = useDebounce(searchTerm, 500)
   const queryData = useQuery(
-    ['user list', debouncedSearch],
-    () => UserService.getAll(debouncedSearch),
+    ['genre list', debouncedSearch],
+    () => GenreService.getAll(debouncedSearch),
     {
       select: ({ data }) =>
         data.map(
-          (user): ITableItem => ({
-            _id: user._id,
-            editUrl: getAdminUrl(`user/edit/${user._id}`),
-            items: [user.email, convertMongoDate(user.createdAt)],
+          (genre): ITableItem => ({
+            _id: genre._id,
+            editUrl: getAdminUrl(`genre/edit/${genre._id}`),
+            items: [genre.name, genre.slug],
           })
         ),
       onError: (error) => {
-        toastError(error, 'User list')
+        toastError(error, 'Genre list')
       },
     }
   )
   const { mutateAsync: deleteAsync } = useMutation(
-    ['delete user', debouncedSearch],
-    (userId: string) => UserService.deleteUser(userId),
+    ['delete genre', debouncedSearch],
+    (genreId: string) => GenreService.deleteGenre(genreId),
     {
       onError: (error) => {
-        toastError(error, 'Delete user')
+        toastError(error, 'Delete genre')
       },
       onSuccess: () => {
-        toastr.success('Delete user', 'Success delete user')
+        toastr.success('Delete genre', 'Success delete genre')
         queryData.refetch()
       },
     }

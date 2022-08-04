@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Button } from '@/components/ui/field-elements/Button'
+import { Button } from '@/ui/field-elements/Button'
 
 import styles from './AdminCreateButton.module.scss'
 

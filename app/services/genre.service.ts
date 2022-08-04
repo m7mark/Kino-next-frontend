@@ -1,4 +1,5 @@
 import { axiosBase } from 'api/interceptors'
+import axios from 'api/interceptors'
 
 import { IGenre } from '@/shared/types/movies.types'
 
@@ -9,5 +10,8 @@ export const GenreService = {
     return axiosBase.get<IGenre[]>(getGenresUrl(''), {
       params: searchTerm ? { searchTerm } : {},
     })
+  },
+  async deleteGenre(_id: string) {
+    return axios.delete<string>(getGenresUrl(`/${_id}`))
   },
 }

@@ -4,13 +4,12 @@ import Link from 'next/link'
 import { FC } from 'react'
 import { useQuery } from 'react-query'
 
-import { SkeletonLoader } from '@/components/ui/SkeletonLoader'
-
+import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { SubHeading } from '@/ui/heading/SubHeading'
 
 import { IMovie } from '@/shared/types/movies.types'
 
-import { MovieServise } from '@/services/movie.service'
+import { MovieService } from '@/services/movie.service'
 
 import { getMovieUrl } from '@/config/url.config'
 
@@ -19,7 +18,7 @@ import styles from '../Admin.module.scss'
 export const PopularMovie: FC = () => {
   const { isLoading, data: movie } = useQuery(
     'Popular movies admin panel',
-    () => MovieServise.getMostPopularMovies(),
+    () => MovieService.getMostPopularMovies(),
     {
       select: (data): IMovie => data[0],
     }

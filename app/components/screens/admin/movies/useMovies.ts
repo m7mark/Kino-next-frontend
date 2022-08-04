@@ -6,42 +6,46 @@ import { ITableItem } from '@/ui/admin-table/AdminTable/admin-table.interface'
 
 import { useDebounce } from '@/hooks/useDebounce'
 
-import { UserService } from '@/services/user.service'
+import { MovieService } from '@/services/movie.service'
 
-import { convertMongoDate } from '@/utils/date/convertMongoDate'
+import { getGenresList } from '@/utils/movie/getGenresList'
 import { toastError } from '@/utils/toast-error'
 
 import { getAdminUrl } from '@/config/url.config'
 
-export const useUsers = () => {
+export const useMovies = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const debouncedSearch = useDebounce(searchTerm, 500)
   const queryData = useQuery(
-    ['user list', debouncedSearch],
-    () => UserService.getAll(debouncedSearch),
+    ['movie list', debouncedSearch],
+    () => MovieService.getAll(debouncedSearch),
     {
       select: ({ data }) =>
         data.map(
-          (user): ITableItem => ({
-            _id: user._id,
-            editUrl: getAdminUrl(`user/edit/${user._id}`),
-            items: [user.email, convertMongoDate(user.createdAt)],
+          (movie): ITableItem => ({
+            _id: movie._id,
+            editUrl: getAdminUrl(`movie/edit/${movie._id}`),
+            items: [
+              movie.title,
+              getGenresList(movie.genres),
+              String(movie.rating),
+            ],
           })
         ),
       onError: (error) => {
-        toastError(error, 'User list')
+        toastError(error, 'Movie list')
       },
     }
   )
   const { mutateAsync: deleteAsync } = useMutation(
-    ['delete user', debouncedSearch],
-    (userId: string) => UserService.deleteUser(userId),
+    ['delete movie', debouncedSearch],
+    (movieId: string) => MovieService.deleteMovie(movieId),
     {
       onError: (error) => {
-        toastError(error, 'Delete user')
+        toastError(error, 'Delete movie')
       },
       onSuccess: () => {
-        toastr.success('Delete user', 'Success delete user')
+        toastr.success('Delete movie', 'Success delete movie')
         queryData.refetch()
       },
     }
