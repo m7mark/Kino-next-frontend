@@ -39,7 +39,7 @@ export const useMovies = () => {
   )
   const { mutateAsync: deleteAsync } = useMutation(
     ['delete movie', debouncedSearch],
-    (movieId: string) => MovieService.deleteMovie(movieId),
+    (movieId: string) => MovieService.delete(movieId),
     {
       onError: (error) => {
         toastError(error, 'Delete movie')

@@ -35,7 +35,7 @@ export const useUsers = () => {
   )
   const { mutateAsync: deleteAsync } = useMutation(
     ['delete user', debouncedSearch],
-    (userId: string) => UserService.deleteUser(userId),
+    (userId: string) => UserService.delete(userId),
     {
       onError: (error) => {
         toastError(error, 'Delete user')

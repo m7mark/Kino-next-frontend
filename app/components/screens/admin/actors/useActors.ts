@@ -34,7 +34,7 @@ export const useActors = () => {
   )
   const { mutateAsync: deleteAsync } = useMutation(
     ['delete actor', debouncedSearch],
-    (actorId: string) => ActorService.deleteActor(actorId),
+    (actorId: string) => ActorService.delete(actorId),
     {
       onError: (error) => {
         toastError(error, 'Delete actor')
