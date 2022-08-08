@@ -1,0 +1,84 @@
+import dynamic from 'next/dynamic'
+import { FC } from 'react'
+import { Controller, useForm } from 'react-hook-form'
+import { stripHtml } from 'string-strip-html'
+
+import { SkeletonLoader } from '@/ui/SkeletonLoader'
+import { AdminNavigation } from '@/ui/admin-navigation/AdminNavigation'
+import { Button } from '@/ui/field-elements/Button'
+import { Field } from '@/ui/field-elements/Field'
+import { SlugField } from '@/ui/field-elements/SlugField/SlugField'
+import formStyles from '@/ui/field-elements/admin-form.module.scss'
+import { Heading } from '@/ui/heading/Heading'
+
+import { Meta } from '@/utils/meta/Meta'
+import { generateSlug } from '@/utils/text/generateSlug'
+
+import { IActorEditInput } from './actor-edit.interface'
+import { useActorEdit } from './useActorEdit'
+
+const DynamicTextEditor = dynamic(
+  () => import('@/ui/field-elements/TextEditor'),
+  { ssr: false }
+)
+
+export const ActorEdit: FC = () => {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+    setValue,
+    getValues,
+    control,
+  } = useForm<IActorEditInput>({
+    mode: 'onChange',
+  })
+  const { isLoading, onSubmit } = useActorEdit(setValue)
+
+  return (
+    <Meta title="Edit actor">
+      <AdminNavigation />
+      <Heading title="Edit actor" />
+      <form onSubmit={handleSubmit(onSubmit)} className={formStyles.form}>
+        {isLoading ? (
+          <SkeletonLoader count={3} />
+        ) : (
+          <>
+            <div className={formStyles.fields}>
+              <Field
+                {...register('name', { required: 'Name is required' })}
+                placeholder="Name"
+                error={errors.name}
+              />
+              <SlugField
+                register={register}
+                error={errors.slug}
+                generate={() =>
+                  setValue('slug', generateSlug(getValues('name')))
+                }
+              />
+
+              {/* <Controller
+              control={control}
+              name="photo"
+              defaultValue=""
+              render={({
+                field: { value, onChange },
+                fieldState: { error },
+              }) => (
+
+              )}
+              rules={{
+                validate: {
+                  required: 'Photo is required',
+                },
+              }}
+            /> */}
+            </div>
+            <Button>Update</Button>
+          </>
+        )}
+      </form>
+    </Meta>
+  )
+}

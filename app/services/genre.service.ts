@@ -22,6 +22,10 @@ export const GenreService = {
     return axios.put<string>(getGenresUrl(`/${_id}`), data)
   },
 
+  async create() {
+    return axios.post<string>(getGenresUrl(`/`))
+  },
+
   async delete(_id: string) {
     return axios.delete<string>(getGenresUrl(`/${_id}`))
   },
