@@ -8,6 +8,7 @@ import { AdminNavigation } from '@/ui/admin-navigation/AdminNavigation'
 import { Button } from '@/ui/field-elements/Button'
 import { Field } from '@/ui/field-elements/Field'
 import { SlugField } from '@/ui/field-elements/SlugField/SlugField'
+import { UploadField } from '@/ui/field-elements/UploadField/UploadField'
 import formStyles from '@/ui/field-elements/admin-form.module.scss'
 import { Heading } from '@/ui/heading/Heading'
 
@@ -58,22 +59,26 @@ export const ActorEdit: FC = () => {
                 }
               />
 
-              {/* <Controller
-              control={control}
-              name="photo"
-              defaultValue=""
-              render={({
-                field: { value, onChange },
-                fieldState: { error },
-              }) => (
-
-              )}
-              rules={{
-                validate: {
+              <Controller
+                control={control}
+                name="photo"
+                defaultValue=""
+                render={({
+                  field: { value, onChange },
+                  fieldState: { error },
+                }) => (
+                  <UploadField
+                    onChange={onChange}
+                    value={value}
+                    error={error}
+                    folder="actors"
+                    placeholder="Photo"
+                  />
+                )}
+                rules={{
                   required: 'Photo is required',
-                },
-              }}
-            /> */}
+                }}
+              />
             </div>
             <Button>Update</Button>
           </>
