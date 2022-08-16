@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { SubmitHandler, UseFormSetValue } from 'react-hook-form'
 import { useMutation, useQuery } from 'react-query'
-import { toastr } from 'react-redux-toastr'
+import { toast } from 'react-toastify'
 
 import { ActorService } from '@/services/actor.service'
 
@@ -38,7 +38,7 @@ export const useActorEdit = (setValue: UseFormSetValue<IActorEditInput>) => {
         toastError(error, 'Update actor')
       },
       onSuccess: () => {
-        toastr.success('Update actor', 'update was successful')
+        toast.success('Successful update actor')
         push(getAdminUrl('actors'))
       },
     }

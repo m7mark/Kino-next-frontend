@@ -23,9 +23,12 @@ export const MovieService = {
   async getById(_id: string) {
     return axios.get<IMovieEditInput>(getMoviesUrl(`/${_id}`))
   },
-
+  // TO DO: create description field in movie edit page
   async update(_id: string, data: IMovieEditInput) {
-    return axios.put<string>(getMoviesUrl(`/${_id}`), data)
+    return axios.put<string>(getMoviesUrl(`/${_id}`), {
+      ...data,
+      description: 'film',
+    })
   },
 
   async create() {

@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { SubmitHandler, UseFormSetValue } from 'react-hook-form'
 import { useMutation, useQuery } from 'react-query'
-import { toastr } from 'react-redux-toastr'
+import { toast } from 'react-toastify'
 
 import { MovieService } from '@/services/movie.service'
 
@@ -38,7 +38,7 @@ export const useMovieEdit = (setValue: UseFormSetValue<IMovieEditInput>) => {
         toastError(error, 'Update movie')
       },
       onSuccess: () => {
-        toastr.success('Update movie', 'update was successful')
+        toast.success('Successful update movie')
         push(getAdminUrl('movies'))
       },
     }

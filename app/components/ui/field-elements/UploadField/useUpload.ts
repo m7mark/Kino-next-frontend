@@ -16,7 +16,7 @@ type TypeUpload = (
 export const useUpload: TypeUpload = (onChange, folder) => {
   const [isLoading, setIsLoading] = useState(false)
 
-  const { mutateAsync, isLoading: isQueryLoading } = useMutation(
+  const { mutateAsync } = useMutation(
     'upload file',
     (data: FormData) => FileService.upload(data, folder),
     {
@@ -34,7 +34,7 @@ export const useUpload: TypeUpload = (onChange, folder) => {
       const files = e.target.files
       if (!files?.length) return
       const formData = new FormData()
-      formData.append('file', files[0])
+      formData.append('image', files[0])
 
       await mutateAsync(formData)
 

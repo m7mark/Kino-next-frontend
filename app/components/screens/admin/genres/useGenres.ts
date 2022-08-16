@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { ChangeEvent, useMemo, useState } from 'react'
 import { useMutation, useQuery } from 'react-query'
-import { toastr } from 'react-redux-toastr'
+import { toast } from 'react-toastify'
 
 import { ITableItem } from '@/ui/admin-table/AdminTable/admin-table.interface'
 
@@ -42,7 +42,7 @@ export const useGenres = () => {
         toastError(error, 'Delete genre')
       },
       onSuccess: () => {
-        toastr.success('Delete genre', 'Success delete genre')
+        toast.success('Delete genre success')
         queryData.refetch()
       },
     }
@@ -56,7 +56,7 @@ export const useGenres = () => {
         toastError(error, 'Create genre')
       },
       onSuccess: ({ data: _id }) => {
-        toastr.success('Create genre', 'Success create genre')
+        toast.success('Success create genre')
         push(`genre/edit/${_id}`)
       },
     }

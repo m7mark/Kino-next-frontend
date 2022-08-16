@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { ChangeEvent, useMemo, useState } from 'react'
 import { useMutation, useQuery } from 'react-query'
-import { toastr } from 'react-redux-toastr'
+import { toast } from 'react-toastify'
 
 import { ITableItem } from '@/ui/admin-table/AdminTable/admin-table.interface'
 
@@ -47,7 +47,7 @@ export const useMovies = () => {
         toastError(error, 'Delete movie')
       },
       onSuccess: () => {
-        toastr.success('Delete movie', 'Success delete movie')
+        toast.success('Success delete movie')
         queryData.refetch()
       },
     }
@@ -60,7 +60,7 @@ export const useMovies = () => {
         toastError(error, 'Create movie')
       },
       onSuccess: ({ data: _id }) => {
-        toastr.success('Create movie', 'Success create movie')
+        toast.success('Success create movie')
         push(`movie/edit/${_id}`)
       },
     }

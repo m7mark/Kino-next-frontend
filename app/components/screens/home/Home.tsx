@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import { toastr } from 'react-redux-toastr'
 
 import { Heading } from '@/ui/heading/Heading'
 
@@ -19,7 +18,6 @@ export const Home: FC<IHome> = () => {
           className="text-gray-300 mb-8 text-xl"
         ></Heading>
       </Meta>
-      <button onClick={() => toastr.success('Auth', 'Success')}>Show</button>
     </>
   )
 }

@@ -6,6 +6,9 @@ const nextConfig = {
     APP_URL: process.env.REACT_APP_URL,
     APP_ENV: process.env.REACT_APP_ENV,
   },
+  images: {
+    domains: ['res.cloudinary.com'],
+  },
   async rewrites() {
     return [
       // {

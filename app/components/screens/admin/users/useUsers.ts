@@ -1,6 +1,6 @@
 import { ChangeEvent, useMemo, useState } from 'react'
 import { useMutation, useQuery } from 'react-query'
-import { toastr } from 'react-redux-toastr'
+import { toast } from 'react-toastify'
 
 import { ITableItem } from '@/ui/admin-table/AdminTable/admin-table.interface'
 
@@ -41,7 +41,7 @@ export const useUsers = () => {
         toastError(error, 'Delete user')
       },
       onSuccess: () => {
-        toastr.success('Delete user', 'Success delete user')
+        toast.success('Success delete user')
         queryData.refetch()
       },
     }

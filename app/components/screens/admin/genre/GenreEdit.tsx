@@ -41,7 +41,7 @@ export const GenreEdit: FC = () => {
       <Heading title="Edit genre" />
       <form onSubmit={handleSubmit(onSubmit)} className={formStyles.form}>
         {isLoading ? (
-          <SkeletonLoader count={3} />
+          <SkeletonLoader count={2} height={48} className="mb-4" />
         ) : (
           <>
             <div className={formStyles.fields}>

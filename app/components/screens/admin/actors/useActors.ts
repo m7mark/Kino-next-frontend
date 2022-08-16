@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { ChangeEvent, useMemo, useState } from 'react'
 import { useMutation, useQuery } from 'react-query'
-import { toastr } from 'react-redux-toastr'
+import { toast } from 'react-toastify'
 
 import { ITableItem } from '@/ui/admin-table/AdminTable/admin-table.interface'
 
@@ -42,7 +42,7 @@ export const useActors = () => {
         toastError(error, 'Delete actor')
       },
       onSuccess: () => {
-        toastr.success('Delete actor', 'Success delete actor')
+        toast.success('Successful delete actor')
         queryData.refetch()
       },
     }
@@ -56,7 +56,7 @@ export const useActors = () => {
         toastError(error, 'Create actor')
       },
       onSuccess: ({ data: _id }) => {
-        toastr.success('Create actor', 'Success create actor')
+        toast.success('Successful create actor')
         push(`actor/edit/${_id}`)
       },
     }
