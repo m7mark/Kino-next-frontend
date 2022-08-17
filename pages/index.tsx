@@ -3,6 +3,7 @@ import type { GetStaticProps, NextPage } from 'next'
 
 import { Home } from '@/components/screens/home/Home'
 import { IHome } from '@/components/screens/home/home.interface'
+import { IGalleryItem } from '@/components/ui/gallery/gallery.interface'
 import { ISlide } from '@/components/ui/slider/slider.interface'
 
 import { ActorService } from '@/services/actor.service'
@@ -10,14 +11,14 @@ import { MovieService } from '@/services/movie.service'
 
 import { getGenresList } from '@/utils/movie/getGenresList'
 
-import { getMovieUrl } from '@/config/url.config'
+import { getActorUrl, getMovieUrl } from '@/config/url.config'
 
 import styles from '../styles/Home.module.scss'
 
-const HomePage: NextPage<IHome> = ({ slides }) => {
+const HomePage: NextPage<IHome> = ({ slides, actors, trendingMovies }) => {
   return (
     <div className={styles.container}>
-      <Home slides={slides} />
+      <Home slides={slides} actors={actors} trendingMovies={trendingMovies} />
     </div>
   )
 }
@@ -26,7 +27,7 @@ export const getStaticProps: GetStaticProps = async () => {
   try {
     const { data: movies } = await MovieService.getAll()
     const { data: dataActors } = await ActorService.getAll()
-    const datatTrendingMovies = await MovieService.getMostPopularMovies()
+    const dataTrendingMovies = await MovieService.getMostPopularMovies()
 
     const slides: ISlide[] = movies.slice(0, 3).map((m) => ({
       _id: m._id,
@@ -36,29 +37,29 @@ export const getStaticProps: GetStaticProps = async () => {
       bigPoster: m.bigPoster,
     }))
 
-    // const actors: IGalleryItem[] = dataActors.slice(0, 7).map((a) => ({
-    //   name: a.name,
-    //   posterPath: a.photo,
-    //   url: getActorUrl(a.slug),
-    //   content: {
-    //     title: a.name,
-    //     subTitle: `+${a.countMovies} movies`,
-    //   },
-    // }))
+    const actors: IGalleryItem[] = dataActors.slice(0, 7).map((a) => ({
+      name: a.name,
+      posterPath: a.photo,
+      link: getActorUrl(a.slug),
+      content: {
+        title: a.name,
+        subTitle: `+${a.countMovies} movies`,
+      },
+    }))
 
-    // const trendingMovies: IGalleryItem[] = datatTrendingMovies
-    //   .slice(0, 7)
-    //   .map((m) => ({
-    //     name: m.title,
-    //     posterPath: m.poster,
-    //     url: getMovieUrl(m.slug),
-    //   }))
+    const trendingMovies: IGalleryItem[] = dataTrendingMovies
+      .slice(0, 7)
+      .map((m) => ({
+        name: m.title,
+        posterPath: m.poster,
+        link: getMovieUrl(m.slug),
+      }))
 
     return {
       props: {
-        // actors,
+        actors,
         slides,
-        // trendingMovies,
+        trendingMovies,
       } as IHome,
     }
   } catch (error) {
@@ -66,9 +67,9 @@ export const getStaticProps: GetStaticProps = async () => {
 
     return {
       props: {
-        // actors: [],
+        actors: [],
         slides: [],
-        // trendingMovies: [],
+        trendingMovies: [],
       } as IHome,
     }
   }
