@@ -13,8 +13,13 @@ export const ActorService = {
       params: searchTerm ? { searchTerm } : {},
     })
   },
+
   async getById(_id: string) {
     return axios.get<IActorEditInput>(getActorsUrl(`/${_id}`))
+  },
+
+  async getBySlug(slug: string) {
+    return axiosBase.get<IActor>(getActorsUrl(`/by-slug/${slug}`))
   },
 
   async update(_id: string, data: IActorEditInput) {
