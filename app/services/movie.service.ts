@@ -35,6 +35,10 @@ export const MovieService = {
     return axiosBase.post<IMovie[]>(getMoviesUrl('/by-genres'), { genreIds })
   },
 
+  async getBySlug(slug: string) {
+    return axiosBase.get<IMovie>(getMoviesUrl(`/by-slug/${slug}`))
+  },
+
   async getByActor(actorId: string) {
     return axiosBase.get<IMovie[]>(getMoviesUrl(`/by-actor/${actorId}`))
   },
