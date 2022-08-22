@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { stripHtml } from 'string-strip-html'
 
-import { UploadField } from '@/components/ui/field-elements/UploadField/UploadField'
+import { UploadField } from '@/ui/field-elements/UploadField/UploadField'
 
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { AdminNavigation } from '@/ui/admin-navigation/AdminNavigation'

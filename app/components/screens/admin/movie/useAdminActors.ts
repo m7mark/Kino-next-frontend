@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query'
 
-import { IOptionsSelect } from '@/components/ui/select/select.interface'
+import { IOptionsSelect } from '@/ui/select/select.interface'
 
 import { ActorService } from '@/services/actor.service'
 
