@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { MaterialIcon } from '@/components/ui/MaterialIcon'
+import { MaterialIcon } from '@/ui/MaterialIcon'
 
 import { IMovie } from '@/shared/types/movies.types'
 
