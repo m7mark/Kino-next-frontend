@@ -10,7 +10,6 @@ import { IMovie } from '@/shared/types/movies.types'
 
 import { Meta } from '@/utils/meta/Meta'
 
-import Content from './Content/Content'
 import { useUpdateCountOpened } from './useUpdateCountOpened'
 
 const DynamicVideoPlayer = dynamic(
@@ -24,6 +23,10 @@ const DynamicRateMovie = dynamic(() => import('./RateMovie/RateMovie'), {
   ssr: false,
 })
 
+const DynamicContent = dynamic(() => import('./Content/Content'), {
+  ssr: false,
+})
+
 export const SingleMovie: FC<{
   movie: IMovie
   similarMovies: IGalleryItem[]
@@ -33,7 +36,7 @@ export const SingleMovie: FC<{
     <Meta title={movie.title} description={`Watch ${movie.title}`}>
       <Banner
         imagePath={movie.bigPoster}
-        Detail={() => <Content movie={movie} />}
+        Detail={() => <DynamicContent movie={movie} />}
       />
       <DynamicVideoPlayer videoSource={movie.videoUrl} slug={movie.slug} />
 

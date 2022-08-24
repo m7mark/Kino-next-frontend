@@ -14,11 +14,9 @@ import { getGenresList } from '@/utils/movie/getGenresList'
 
 import { getActorUrl, getMovieUrl } from '@/config/url.config'
 
-import styles from '../styles/Home.module.scss'
-
 const HomePage: NextPage<IHome> = ({ slides, actors, trendingMovies }) => {
   return (
-    <div className={styles.container}>
+    <div style={{ padding: '0 2rem' }}>
       <Home slides={slides} actors={actors} trendingMovies={trendingMovies} />
     </div>
   )
