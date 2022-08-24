@@ -3,6 +3,7 @@ import type { GetStaticProps, NextPage } from 'next'
 
 import { Home } from '@/components/screens/home/Home'
 import { IHome } from '@/components/screens/home/home.interface'
+
 import { IGalleryItem } from '@/ui/gallery/gallery.interface'
 import { ISlide } from '@/ui/slider/slider.interface'
 
@@ -61,6 +62,7 @@ export const getStaticProps: GetStaticProps = async () => {
         slides,
         trendingMovies,
       } as IHome,
+      revalidate: 60,
     }
   } catch (error) {
     console.log(errorCatch(error))

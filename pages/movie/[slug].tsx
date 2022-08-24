@@ -2,6 +2,7 @@ import { errorCatch } from 'api/api.helpers'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 import { SingleMovie } from '@/components/screens/single-movie/SingleMovie'
+
 import { IGalleryItem } from '@/ui/gallery/gallery.interface'
 
 import { IMovie } from '@/shared/types/movies.types'
@@ -57,6 +58,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
     return {
       props: { movie, similarMovies },
+      revalidate: 60,
     }
   } catch (e) {
     console.log(errorCatch(e))

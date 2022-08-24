@@ -20,6 +20,7 @@ const CheckRole: FC<TypeComponentAuthFields> = ({
   const isUser = user && !user.isAdmin
   if (isUser && isOnlyUser) return <Children />
   else {
+    console.log('redirect to auth')
     router.pathname !== '/auth' && router.replace('/auth')
     return null
   }
