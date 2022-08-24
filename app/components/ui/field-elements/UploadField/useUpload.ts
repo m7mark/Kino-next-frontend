@@ -34,7 +34,7 @@ export const useUpload: TypeUpload = (onChange, folder) => {
       const files = e.target.files
       if (!files?.length) return
       const formData = new FormData()
-      formData.append('image', files[0])
+      formData.append('file', files[0])
 
       await mutateAsync(formData)
 
