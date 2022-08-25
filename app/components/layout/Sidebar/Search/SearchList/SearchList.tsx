@@ -6,7 +6,7 @@ import { IMovie } from '@/shared/types/movies.types'
 
 import { getMovieUrl } from '@/config/url.config'
 
-import styles from './SearchList.module.scss'
+import styles from './SearchLists.module.scss'
 
 export const SearchList: FC<{ movies: IMovie[] }> = ({ movies }) => {
   return (

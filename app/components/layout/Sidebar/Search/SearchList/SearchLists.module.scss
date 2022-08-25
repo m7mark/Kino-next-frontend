@@ -4,7 +4,7 @@
   > a {
     @apply flex py-3 px-4 items-center relative;
     &::after {
-      @apply absolute -right-0.5 h-0 w-0.5 bg-transparent;
+      @apply absolute -right-0.5 w-0.5 h-0 bg-transparent;
       content: '';
       top: 28%;
       transition: height 0.3s ease-in-out, background-color 0.3s ease-in-out;
