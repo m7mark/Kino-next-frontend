@@ -14,6 +14,10 @@ export const useVideo = () => {
     if (videoRef.current?.duration) setVideoTime(videoRef.current.duration)
   }, [videoRef.current?.duration])
 
+  useEffect(() => {
+    setIsPlaying(false)
+  }, [videoRef.current?.src])
+
   const toggleVideo = useCallback(() => {
     if (!isPlaying) {
       videoRef.current?.play()

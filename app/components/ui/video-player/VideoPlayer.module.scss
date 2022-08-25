@@ -1,5 +1,6 @@
 .wrapper {
   @apply mt-12 rounded-2xl overflow-hidden shadow-xl relative animate-fade;
+  min-height: 22vw;
 
   .controls {
     @apply flex-center-between absolute bottom-3 left-6 right-6;

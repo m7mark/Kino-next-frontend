@@ -17,7 +17,7 @@ const VideoPlayer: FC<IVideoPlayer> = ({ videoSource, slug }) => {
   return (
     <div
       className={cn(styles.wrapper, {
-        'h-96': !user || !video.videoTime,
+        'h-96': !user,
       })}
     >
       {user ? (
