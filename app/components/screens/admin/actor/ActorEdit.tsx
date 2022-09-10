@@ -1,7 +1,5 @@
-import dynamic from 'next/dynamic'
 import { FC } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { stripHtml } from 'string-strip-html'
 
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { AdminNavigation } from '@/ui/admin-navigation/AdminNavigation'
@@ -17,11 +15,6 @@ import { generateSlug } from '@/utils/text/generateSlug'
 
 import { IActorEditInput } from './actor-edit.interface'
 import { useActorEdit } from './useActorEdit'
-
-const DynamicTextEditor = dynamic(
-  () => import('@/ui/field-elements/TextEditor'),
-  { ssr: false }
-)
 
 export const ActorEdit: FC = () => {
   const {

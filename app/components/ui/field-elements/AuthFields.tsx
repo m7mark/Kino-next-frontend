@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { FormState, UseFormRegister } from 'react-hook-form'
+import { FieldValues, FormState, UseFormRegister } from 'react-hook-form'
 
 import { IAuthInput } from '@/components/screens/auth/auth.interface'
 
@@ -7,7 +7,7 @@ import { validEmail } from '@/shared/regex'
 
 import { Field } from './Field'
 
-interface IAuthFields<T> {
+interface IAuthFields<T extends FieldValues> {
   register: UseFormRegister<any>
   formState: FormState<T>
   isPasswordRequired?: boolean
