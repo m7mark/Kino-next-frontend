@@ -1,6 +1,6 @@
-# Online cinema app
+# Online cinema app - Next.js frontend
 
-`Next`, `Typescript`, `React-Query`, `ReduxTK`, `React-Select`, `Nest`, `MongoDB`
+`Next`, `Typescript`, `React-Query`, `ReduxTK`, `React-Select`
 
 ##### DEPLOY TO
 
